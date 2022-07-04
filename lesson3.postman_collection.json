@@ -1,0 +1,594 @@
+{
+	"info": {
+		"_postman_id": "d2e136bc-d73d-4e34-92ea-89099fd16df7",
+		"name": "lesson3",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "20623753"
+	},
+	"item": [
+		{
+			"name": "lesson 2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Successful POST request\", function () {\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([201, 202, 200]);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Status code name has string\", function () {\r",
+							"    pm.response.to.have.status(\"OK\");\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Successful POST request\", function () {\r",
+							"    pm.expect(pm.response.code).to.include(\"200\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Status code eql 200\", function () {\r",
+							"    pm.expect(pm.response.code).to.eql(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time is less than 200ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(300);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time is more than 60ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.above(50);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Begin at 2\", function () {\r",
+							"    pm.response.to.be.info;\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Begin at 2\", function () {\r",
+							"    pm.response.to.be.success;\r",
+							"});\r",
+							"\r",
+							"pm.test(\"IS OK\", function () {\r",
+							"    pm.response.to.be.ok;\r",
+							"});\r",
+							"\r",
+							"\r",
+							"//chaijs\r",
+							"\r",
+							"pm.test(\"to.not.have\", function () {\r",
+							"    pm.response.to.not.have.status(400);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Тест через to.equal\", function () {\r",
+							"    pm.expect(pm.response.code).to.equal(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"deep.equal\", function () {\r",
+							"    pm.expect(pm.response.code).to.deep.equal(400);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"include\", function () {\r",
+							"    pm.expect(pm.response.code).to.deep.include(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"to be a string\", function () {\r",
+							"    pm.expect(pm.response.code).to.be.a(\"string\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"to be a number\", function () {\r",
+							"    pm.expect(pm.response.code).to.be.a(\"number\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"to be true\", function () {\r",
+							"    pm.expect(pm.response.code === 200).to.be.true;\r",
+							"});\r",
+							"\r",
+							"pm.test(\"to be false\", function () {\r",
+							"    pm.expect(pm.response.code === 200).to.be.false;\r",
+							"});\r",
+							"\r",
+							"pm.test(\"to not be ok\", function () {\r",
+							"    pm.expect(pm.response.code === 200).to.not.be.ok;\r",
+							"});\r",
+							"\r",
+							"pm.test(\"not be null\", function () {\r",
+							"    pm.expect(pm.response.code).to.not.be.null;\r",
+							"});\r",
+							"\r",
+							"pm.test(\"to be null\", function () {\r",
+							"    pm.expect(pm.response.code).to.be.null;\r",
+							"});\r",
+							"\r",
+							"pm.test(\"to be NAN\", function () {\r",
+							"    pm.expect(pm.response.code).to.be.NaN;\r",
+							"});\r",
+							"\r",
+							"pm.test(\"to not be NAN\", function () {\r",
+							"    pm.expect(pm.response.code).to.not.be.NaN;\r",
+							"});\r",
+							"\r",
+							"pm.test(\"to be empty\", function () {\r",
+							"    pm.expect(pm.response.code).to.be.empty;\r",
+							"});\r",
+							"\r",
+							"pm.test(\"to be least\", function () {\r",
+							"    pm.expect(pm.response.code).to.be.at.least(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"to be most\", function () {\r",
+							"    pm.expect(pm.response.code).to.be.at.most(300);\r",
+							"});\r",
+							"\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "http://162.55.220.72:5005/first",
+					"protocol": "http",
+					"host": [
+						"162",
+						"55",
+						"220",
+						"72"
+					],
+					"port": "5005",
+					"path": [
+						"first"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "doregister",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(404);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Successful POST request\", function () {\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([201, 200, 404]);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "email",
+							"value": "test_demo_1@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "Демо 1",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "1",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://users.bugred.ru/task/rest/doregister",
+					"protocol": "http",
+					"host": [
+						"users",
+						"bugred",
+						"ru"
+					],
+					"path": [
+						"task",
+						"rest",
+						"doregister"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Object.key",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = pm.response.json();\r",
+							"console.log(pm.response);\r",
+							"pm.test(\"Your test name\", function () {\r",
+							"    pm.expect(pm.response.json().tyoe).to.eql(\"error\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "email",
+							"value": "test_demo_1@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "Демо 1",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "1",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://users.bugred.ru/task/rest/doregister",
+					"protocol": "http",
+					"host": [
+						"users",
+						"bugred",
+						"ru"
+					],
+					"path": [
+						"task",
+						"rest",
+						"doregister"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "json",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = pm.response.json();\r",
+							"let anna = jsonData.suggestions[0].value;\r",
+							"console.log(anna)\r",
+							"let anna_gender = jsonData.suggestions[0].data.gender;\r",
+							"console.log(anna_gender)\r",
+							"pm.test(\"Anna chek\", function () {\r",
+							"    pm.expect(anna).to.eql(\"Анна\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Gender check\", function () {\r",
+							"    pm.expect(anna_gender).to.eql(\"FEMALE\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "key",
+							"value": "",
+							"type": "string"
+						},
+						{
+							"key": "value",
+							"value": "",
+							"type": "string"
+						},
+						{
+							"key": "in",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Token 251cbc92264812f5536f1e1a9e61847056012233",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"query\": \"Ан\",\r\n    \"gender\": \"FEMALE\"\r\n}"
+				},
+				"url": {
+					"raw": "https://suggestions.dadata.ru/suggestions/api/4_1/rs/suggest/fio",
+					"protocol": "https",
+					"host": [
+						"suggestions",
+						"dadata",
+						"ru"
+					],
+					"path": [
+						"suggestions",
+						"api",
+						"4_1",
+						"rs",
+						"suggest",
+						"fio"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "testjson",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = pm.response.json();\r",
+							"console.log(jsonData)\r",
+							"let local_name = jsonData.suggestions[0].data.local;\r",
+							"console.log(local_name)\r",
+							"pm.test(\"Check Name\", function () {\r",
+							"    pm.expect(local_name).to.eql(\"anton\");\r",
+							"});\r",
+							"\r",
+							"let domain = jsonData.suggestions[2].data.domain;\r",
+							"\r",
+							"pm.test(\"Check Domain\", function () {\r",
+							"    pm.expect(domain).to.eql(\"yandex.ru\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Token 251cbc92264812f5536f1e1a9e61847056012233",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \"query\": \"anton@\" }"
+				},
+				"url": {
+					"raw": "https://suggestions.dadata.ru/suggestions/api/4_1/rs/suggest/email",
+					"protocol": "https",
+					"host": [
+						"suggestions",
+						"dadata",
+						"ru"
+					],
+					"path": [
+						"suggestions",
+						"api",
+						"4_1",
+						"rs",
+						"suggest",
+						"email"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "xml",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = xml2Json(responseBody);\r",
+							"console.log(jsonData);\r",
+							"let anna = jsonData.SuggestResponse.suggestions[0].value;\r",
+							"console.log(anna);\r",
+							"\r",
+							"let anna_gender = jsonData.SuggestResponse.suggestions[0].data.gender;\r",
+							"console.log(anna_gender);\r",
+							"\r",
+							"pm.test(\"Name check\", function () {\r",
+							"    pm.expect(anna).to.eql(\"Анна\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Gender check\", function () {\r",
+							"    pm.expect(anna_gender).to.eql(\"FEMALE\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "key",
+							"value": "",
+							"type": "string"
+						},
+						{
+							"key": "value",
+							"value": "",
+							"type": "string"
+						},
+						{
+							"key": "in",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/xml",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Token 251cbc92264812f5536f1e1a9e61847056012233",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"query\": \"Ан\",\r\n    \"gender\": \"FEMALE\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://suggestions.dadata.ru/suggestions/api/4_1/rs/suggest/fio",
+					"protocol": "https",
+					"host": [
+						"suggestions",
+						"dadata",
+						"ru"
+					],
+					"path": [
+						"suggestions",
+						"api",
+						"4_1",
+						"rs",
+						"suggest",
+						"fio"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "xmlTry3",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"let jsonData = xml2Json(responseBody);\r",
+							"console.log(jsonData);\r",
+							"\r",
+							"let local_name = jsonData.SuggestResponse.suggestions[3].data.local;\r",
+							"\r",
+							"let local_domain = jsonData.SuggestResponse.suggestions[3].data.domain;\r",
+							"\r",
+							"pm.test(\"Your test name\", function () {\r",
+							"    pm.expect(local_name).to.eql(\"anton\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Your test domain\", function () {\r",
+							"    pm.expect(local_domain).to.eql(\"bk.ru\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/xml",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Token 251cbc92264812f5536f1e1a9e61847056012233",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \"query\": \"anton@\", \r\n\"count\": 7}"
+				},
+				"url": {
+					"raw": "https://suggestions.dadata.ru/suggestions/api/4_1/rs/suggest/email",
+					"protocol": "https",
+					"host": [
+						"suggestions",
+						"dadata",
+						"ru"
+					],
+					"path": [
+						"suggestions",
+						"api",
+						"4_1",
+						"rs",
+						"suggest",
+						"email"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
