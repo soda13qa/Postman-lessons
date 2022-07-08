@@ -1,0 +1,757 @@
+{
+	"info": {
+		"_postman_id": "f47b95cd-d9de-43a8-820c-25cedea4420a",
+		"name": "lesson 4",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "20623753"
+	},
+	"item": [
+		{
+			"name": "lesson 4 Copy",
+			"item": [
+				{
+					"name": "simple text",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Body is correct\", function () {\r",
+									"    pm.response.to.have.body(\"User-agent: *\\nDisallow: /deny\\n\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body matches string\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"Disallow: /deny\\n\");\r",
+									"});\r",
+									"\r",
+									"console.log(pm.response)\r",
+									"\r",
+									"pm.test(\"Check string\", function () {\r",
+									"    pm.response.to.have.body();\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "text/plain",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://httpbin.org/robots.txt",
+							"protocol": "http",
+							"host": [
+								"httpbin",
+								"org"
+							],
+							"path": [
+								"robots.txt"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Chai.js tests",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const assert = require(\"assert\");\r",
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.assert.ok(pm.response.text() == \"User-agent: *\\nDisallow: /deny\\n\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"==\", function () {\r",
+									"    assert.ok(pm.response.text() == \"User-agent: *\\nDisallow: /deny\\n\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"===\", function () {\r",
+									"    assert.ok(pm.response.text() === \"User-agent: *\\nDisallow: /deny\\n\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "text/plain",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://httpbin.org/robots.txt",
+							"protocol": "http",
+							"host": [
+								"httpbin",
+								"org"
+							],
+							"path": [
+								"robots.txt"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deny",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Body matches string\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"\\n\\\r",
+									"          .-''''''-.\\n\\\r",
+									"        .' _      _ '.\\n\\\r",
+									"       /   O      O   \\\\\\n\\\r",
+									"      :                :\\n\\\r",
+									"      |                |\\n\\\r",
+									"      :       __       :\\n\\\r",
+									"       \\  .-\\\"`  `\\\"-.  /\\n\\\r",
+									"        '.          .'\\n\\\r",
+									"          '-......-'\\n\\\r",
+									"    \");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"WQE\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"'\\n .-\\'\\'\\'\\'\\'\\'-.\\n .\\' _ _ \\'.\\n / O O \\\\\\n :\\n :\\n | |\\n : __ :\\n \\\\ .-\\\"` `\\\"-. /\\n \\'. .\\'\\n \\'-......-\\'\\n\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Head\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\".-''''''-.\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Second part\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\" .' _      _ '.\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Third part\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"/   O      O   \");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Chain of two first strings\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"/   O      O   \").and.include(\" .' _      _ '.\");;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"In one string\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\".-''''''-. \\n.' _      _ '.\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "text/plain",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://httpbin.org/deny",
+							"protocol": "http",
+							"host": [
+								"httpbin",
+								"org"
+							],
+							"path": [
+								"deny"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "test json",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = pm.response.json();\r",
+									"pm.test(\"Error check\", function () {\r",
+									"    \r",
+									"    pm.expect(jsonData.type).to.eql(\"error\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body is correct\", function () {\r",
+									"    pm.response.to.have.body({\r",
+									"    \"type\": \"error\",\r",
+									"    \"message\": \" email test_demo_1@gmail.com уже есть в базе\"\r",
+									"});\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body matches string\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"error\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Checking with jsonBody\", function () {\r",
+									"    pm.response.to.have.jsonBody({\r",
+									"    \"type\": \"error\",\r",
+									"    \"message\": \" email test_demo_1@gmail.com уже есть в базе\"\r",
+									"})\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Checking with not.jsonBody\", function () {\r",
+									"    pm.response.to.not.have.jsonBody(\"error\")\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "test_demo_1@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "name",
+									"value": "Демо ",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://users.bugred.ru/tasks/rest/doregister",
+							"protocol": "http",
+							"host": [
+								"users",
+								"bugred",
+								"ru"
+							],
+							"path": [
+								"tasks",
+								"rest",
+								"doregister"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "doregister property",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//property проверяет наличие и правильность значения(свойства) перед : \r",
+									"//(message: hello)\r",
+									"var jsonData = pm.response.json();\r",
+									"pm.test(\"property message\", function () {\r",
+									"    pm.expect(jsonData).to.have.property(\"message\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Check properrty in one test\", function () {\r",
+									"    pm.expect(jsonData).to.have.property(\"message\");\r",
+									"    pm.expect(jsonData).to.have.property(\"type\");\r",
+									"});\r",
+									"\r",
+									"//значение property\r",
+									"pm.test(\"Есть свойство message = проверяем его значение\", function () {\r",
+									"    pm.expect(jsonData).to.have.property(\"message\", \" email test_demo_1@gmail.com уже есть в базе\");\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "test_demo_1@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "name",
+									"value": "Демо ",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://users.bugred.ru/tasks/rest/doregister",
+							"protocol": "http",
+							"host": [
+								"users",
+								"bugred",
+								"ru"
+							],
+							"path": [
+								"tasks",
+								"rest",
+								"doregister"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "inlclude json",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Распарсили JSON\r",
+									"    var jsonData = pm.response.json();\r",
+									"\r",
+									"//Sipmle element\r",
+									"pm.test(\"Test on type is include \", function () {\r",
+									"    pm.expect(jsonData.type).to.include(\"error\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"include for a part of word\", function () {\r",
+									"    pm.expect(jsonData.type).to.include(\"err\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"include for a part of word\", function () {\r",
+									"    pm.expect(jsonData.message).to.include(\"email\");\r",
+									"});\r",
+									"\r",
+									"//deep.include\r",
+									"pm.test(\"deep.include for a part of word\", function () {\r",
+									"    pm.expect(jsonData.type).to.deep.include(\"err\");\r",
+									"});\r",
+									"\r",
+									"//finding in the object\r",
+									"pm.test(\"deep.include all over the object\", function () {\r",
+									"    pm.expect(jsonData).to.deep.include(\"err\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"include all object\", function () {\r",
+									"    pm.expect(jsonData).to.include({\r",
+									"    \"type\": \"error\",\r",
+									"    \"message\": \" email test_demo_1@gmail.com уже есть в базе\"\r",
+									"});\r",
+									"});\r",
+									"\r",
+									"pm.test(\"deep.include all object\", function () {\r",
+									"    pm.expect(jsonData).to.deep.include({\r",
+									"    \"type\": \"error\",\r",
+									"    \"message\": \" email test_demo_1@gmail.com уже есть в базе\"\r",
+									"});\r",
+									"});\r",
+									"\r",
+									"pm.test(\"include not all object only part\", function () {\r",
+									"    pm.expect(jsonData).to.include({\r",
+									"    \"type\": \"error\",\r",
+									"});\r",
+									"});\r",
+									"\r",
+									"pm.test(\"include not all object only part\", function () {\r",
+									"    pm.expect(jsonData).to.deep.include({\r",
+									"    \"type\": \"error\",\r",
+									"});\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "test_demo_1@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "name",
+									"value": "Демо ",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://users.bugred.ru/tasks/rest/doregister",
+							"protocol": "http",
+							"host": [
+								"users",
+								"bugred",
+								"ru"
+							],
+							"path": [
+								"tasks",
+								"rest",
+								"doregister"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "test json body chai.js",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = pm.response.json();\r",
+									"//element\r",
+									"pm.test(\"Test on type eql\", function () {\r",
+									"    pm.expect(jsonData.type).to.eql(\"error\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Test on type equal\", function () {\r",
+									"    pm.expect(jsonData.type).to.equal(\"error\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Test on type deep.equal\", function () {\r",
+									"    pm.expect(jsonData.type).to.deep.equal(\"error\");\r",
+									"});\r",
+									"\r",
+									"//Object\r",
+									"\r",
+									"pm.test(\"Test on object eql\", function () {\r",
+									"    pm.expect(jsonData).to.eql({\r",
+									"    \"type\": \"error\",\r",
+									"    \"message\": \" email test_demo_1@gmail.com уже есть в базе\"\r",
+									"});\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Test on object equal\", function () {\r",
+									"    pm.expect(jsonData).to.equal({\r",
+									"    \"type\": \"error\",\r",
+									"    \"message\": \" email test_demo_1@gmail.com уже есть в базе\"\r",
+									"});\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Test on object deep.equal123\", function () {\r",
+									"    pm.expect(jsonData).to.deep.equal({\r",
+									"    \"type\": \"error\",\r",
+									"    \"message\": \"email test_demo_1@gmail.com уже есть в базе\"\r",
+									"});\r",
+									"});\r",
+									"\r",
+									"//testing aliases\r",
+									"pm.test(\"simple equals\", function () {\r",
+									"    pm.expect(jsonData.type).to.equals(\"error\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"object equals\", function () {\r",
+									"    pm.expect(jsonData).to.equals({\r",
+									"    \"type\": \"error\",\r",
+									"    \"message\": \" email test_demo_1@gmail.com уже есть в базе\"\r",
+									"});\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"simple eq\", function () {\r",
+									"    pm.expect(jsonData.type).to.eq(\"error\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"object eq\", function () {\r",
+									"    pm.expect(jsonData).to.eq({\r",
+									"    \"type\": \"error\",\r",
+									"    \"message\": \" email test_demo_1@gmail.com уже есть в базе\"\r",
+									"});\r",
+									"});\r",
+									"\r",
+									"pm.test(\"simple eqls\", function () {\r",
+									"    pm.expect(jsonData.type).to.eqls(\"error\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"object eqls\", function () {\r",
+									"    pm.expect(jsonData).to.eqls({\r",
+									"    \"type\": \"error\",\r",
+									"    \"message\": \" email test_demo_1@gmail.com уже есть в базе\"\r",
+									"});\r",
+									"});\r",
+									"\r",
+									"\r",
+									"//Chain\r",
+									"//chain assertions only for one element\r",
+									"pm.test(\"deep.equal a few assertions\", function () {\r",
+									"    pm.expect(jsonData).to.deep.equal({\r",
+									"    \"type\": \"error\",\r",
+									"    \"message\": \" email test_demo_1@gmail.com уже есть в базе\"\r",
+									"}).and.equal({\r",
+									"    \"type\": \"error\",\r",
+									"    \"message\": \" email test_demo_1@gmail.com уже есть в базе\"\r",
+									"});\r",
+									"});\r",
+									"\r",
+									"\r",
+									"//compare str and num with Chai.js\r",
+									"pm.test(\"To.be.true\", function () {\r",
+									"    pm.expect(jsonData.type == \"error\").to.be.true;\r",
+									"});\r",
+									"pm.test(\"To.be.ok\", function () {\r",
+									"    pm.expect(jsonData.type == \"error\").to.be.ok;\r",
+									"});\r",
+									"\r",
+									"\r",
+									"//compare str and num with Node.js\r",
+									"const assert = require(\"assert\");\r",
+									"pm.test(\"assert.ok\", function () {\r",
+									"    assert.ok(jsonData.type == \"error\");\r",
+									"});\r",
+									"pm.test(\"assert\", function () {\r",
+									"    assert(jsonData.type == \"error\");\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://users.bugred.ru/tasks/rest/doregister",
+							"protocol": "http",
+							"host": [
+								"users",
+								"bugred",
+								"ru"
+							],
+							"path": [
+								"tasks",
+								"rest",
+								"doregister"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "include json example 2",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = pm.response.json();\r",
+									"console.log(jsonData);\r",
+									"\r",
+									"pm.test(\"Prompt for Anna - deep.include\", function () {\r",
+									"    pm.expect(jsonData.suggestions[0].data).to.deep.include({\"name\" : \"Анна\"});\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Prompt for Anna - include\", function () {\r",
+									"    pm.expect(jsonData.suggestions[0].data).to.include({\"name\" : \"Анна\"});\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Prompt for Anna - include\", function () {\r",
+									"    pm.expect(jsonData.suggestions).to.deep.include({\r",
+									"            \"value\": \"Анна\",\r",
+									"            \"unrestricted_value\": \"Анна\",\r",
+									"            \"data\": {\r",
+									"                \"surname\": null,\r",
+									"                \"name\": \"Анна\",\r",
+									"                \"patronymic\": null,\r",
+									"                \"gender\": \"FEMALE\",\r",
+									"                \"source\": null,\r",
+									"                \"qc\": \"0\"\r",
+									"            }\r",
+									"        });\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/xml",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Token 251cbc92264812f5536f1e1a9e61847056012233",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<req>\r\n<query>Ан</query>\r\n<gender>FEMALE</gender>\r\n<count>5</count>\r\n</req>",
+							"options": {
+								"raw": {
+									"language": "xml"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://suggestions.dadata.ru/suggestions/api/4_1/rs/suggest/fio",
+							"protocol": "https",
+							"host": [
+								"suggestions",
+								"dadata",
+								"ru"
+							],
+							"path": [
+								"suggestions",
+								"api",
+								"4_1",
+								"rs",
+								"suggest",
+								"fio"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Property подсказки json",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = pm.response.json();\r",
+									"console.log(jsonData);\r",
+									"\r",
+									"//простой поиск свойств\r",
+									"pm.test(\"Есть свойство suggestions\", function () {\r",
+									"    pm.expect(jsonData).to.have.property(\"suggestions\");\r",
+									"});\r",
+									"// не может идти на уровень ниже\r",
+									"pm.test(\"Есть свойство unrestricted_value\", function () {\r",
+									"    pm.expect(jsonData).to.have.property(\"unrestricted_value\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Есть свойство unrestricted_value\", function () {\r",
+									"    pm.expect(jsonData.suggestions[0]).to.have.property(\"unrestricted_value\");\r",
+									"});\r",
+									"\r",
+									"//deep\r",
+									"pm.test(\"Проверим дочерний обьект - свойство data\", function () {\r",
+									"    pm.expect(jsonData.suggestions[0]).to.have.property(\"data\", {\r",
+									"                \"surname\": null,\r",
+									"                \"name\": \"Анна\",\r",
+									"                \"patronymic\": null,\r",
+									"                \"gender\": \"FEMALE\",\r",
+									"                \"source\": null,\r",
+									"                \"qc\": \"0\"\r",
+									"            });\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Проверим дочерний обьект - свойство data\", function () {\r",
+									"    pm.expect(jsonData.suggestions[0]).to.have.deep.property(\"data\", {\r",
+									"                \"surname\": null,\r",
+									"                \"name\": \"Анна\",\r",
+									"                \"patronymic\": null,\r",
+									"                \"gender\": \"FEMALE\",\r",
+									"                \"source\": null,\r",
+									"                \"qc\": \"0\"\r",
+									"            });\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/xml",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Token 251cbc92264812f5536f1e1a9e61847056012233",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<req>\r\n<query>Ан</query>\r\n<gender>FEMALE</gender>\r\n<count>5</count>\r\n</req>",
+							"options": {
+								"raw": {
+									"language": "xml"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://suggestions.dadata.ru/suggestions/api/4_1/rs/suggest/fio",
+							"protocol": "https",
+							"host": [
+								"suggestions",
+								"dadata",
+								"ru"
+							],
+							"path": [
+								"suggestions",
+								"api",
+								"4_1",
+								"rs",
+								"suggest",
+								"fio"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
