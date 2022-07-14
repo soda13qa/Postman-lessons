@@ -1,0 +1,1024 @@
+{
+	"info": {
+		"_postman_id": "ac43f950-c3dc-4671-b08f-bb595ff5492c",
+		"name": "lesson 5",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "20623753"
+	},
+	"item": [
+		{
+			"name": "lesson 5 Copy",
+			"item": [
+				{
+					"name": ".a (doregister)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = pm.response.json();\r",
+									"\r",
+									"pm.test(\"type - string\", function () {\r",
+									"    pm.expect(jsonData.type).to.be.a(\"string\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"проверим весь обьекст\", function () {\r",
+									"    pm.expect(jsonData).to.be.a(\"object\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "test_demo_1@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "name",
+									"value": "Демо 1",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://users.bugred.ru/tasks/rest/doregister",
+							"protocol": "http",
+							"host": [
+								"users",
+								"bugred",
+								"ru"
+							],
+							"path": [
+								"tasks",
+								"rest",
+								"doregister"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "exercise 2",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = pm.response.json();\r",
+									"pm.test(\"test string\", function () {\r",
+									"    pm.expect(jsonData.type).to.be.a(\"string\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"test eql\", function () {\r",
+									"    pm.expect(jsonData.type).to.eql(\"error\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"test include\", function () {\r",
+									"    pm.expect(jsonData.type).to.include(\"er\");\r",
+									"});\r",
+									"pm.test(\"length of\", function () {\r",
+									"    pm.expect(jsonData.message).to.have.lengthOf(44)\r",
+									"});\r",
+									"pm.test(\"length of above\", function () {\r",
+									"    pm.expect(jsonData.message).to.have.lengthOf.above(1)\r",
+									"});\r",
+									"pm.test(\"length at least\", function () {\r",
+									"    pm.expect(jsonData.message).to.have.lengthOf.at.least(1)\r",
+									"});\r",
+									"pm.test(\"length at most\", function () {\r",
+									"    pm.expect(jsonData.message).to.have.lengthOf.at.most(44)\r",
+									"});\r",
+									"pm.test(\"length of below\", function () {\r",
+									"    pm.expect(jsonData.message).to.have.lengthOf.below(456)\r",
+									"});\r",
+									"//within попадает в диапазон от до\r",
+									"pm.test(\"length within\", function () {\r",
+									"    pm.expect(jsonData.message).to.have.lengthOf.within(1,45)\r",
+									"});\r",
+									"\r",
+									"//равенство\r",
+									"pm.test(\"message через === to.be.ok \", function () {\r",
+									"    pm.expect(jsonData.message === \" email test_demo_1@gmail.com уже есть в базе\").to.be.ok;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"message через == to.be.true \", function () {\r",
+									"    pm.expect(jsonData.message == \" email test_demo_1@gmail.com уже есть в базе\").to.be.true;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"not empty\", function () {\r",
+									"    pm.expect(jsonData.message).is.not.empty;\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "test_demo_1@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "name",
+									"value": "Демо 1",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://users.bugred.ru/tasks/rest/doregister",
+							"protocol": "http",
+							"host": [
+								"users",
+								"bugred",
+								"ru"
+							],
+							"path": [
+								"tasks",
+								"rest",
+								"doregister"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": ".a (подсказки)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = pm.response.json();\r",
+									"\r",
+									"pm.test(\"object\", function () {\r",
+									"    pm.expect(jsonData).to.be.a(\"object\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"array\", function () {\r",
+									"    pm.expect(jsonData.suggestions).to.be.a(\"array\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"дочерний обьект\", function () {\r",
+									"    pm.expect(jsonData.suggestions[0].data).to.be.a(\"object\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/xml",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Token 251cbc92264812f5536f1e1a9e61847056012233",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<req>\r\n<query>Ан</query>\r\n<gender>FEMALE</gender>\r\n<count>5</count>\r\n</req>"
+						},
+						"url": {
+							"raw": "https://suggestions.dadata.ru/suggestions/api/4_1/rs/suggest/fio",
+							"protocol": "https",
+							"host": [
+								"suggestions",
+								"dadata",
+								"ru"
+							],
+							"path": [
+								"suggestions",
+								"api",
+								"4_1",
+								"rs",
+								"suggest",
+								"fio"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": ".instanceof (getuserfull)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = pm.response.json();\r",
+									"pm.test(\"id_task - number\", function () {\r",
+									"    pm.expect(jsonData.tasks[0].id_task).to.be.a(\"number\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"цепочка проверок\", function () {\r",
+									"    pm.expect(jsonData.tasks).to.be.a(\"array\").that.deep.includes({\r",
+									"         \"name\": \"Вторая задача 2\",\r",
+									"            \"id_task\": 272\r",
+									"    });\r",
+									"});\r",
+									"\r",
+									"pm.test(\"тест из документации\", function () {\r",
+									"    pm.expect({a: 1}).to.have.property(\"a\").that.is.a(\"number\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"id_task - такое свойство есть и это число\", function () {\r",
+									"    pm.expect(jsonData.tasks[0]).to.have.property(\"id_task\").that.is.a(\"number\");\r",
+									"});\r",
+									"\r",
+									"\r",
+									"//instanceof Работает с массивами и функциями\r",
+									"pm.test(\"tasks - это массив\", function () {\r",
+									"    pm.expect(jsonData.tasks).to.be.an.instanceOf(Array);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"tasks - это массив, наследуесый от обьектов(цепочка)\", function () {\r",
+									"    pm.expect(jsonData.tasks).to.be.an.instanceOf(Array).and.to.be.instanceOf(Object);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"name - number\", function () {\r",
+									"    pm.expect(jsonData.tasks[0].name).to.be.an.instanceO(String);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"test111@mail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://users.bugred.ru/tasks/rest/getuserfull",
+							"protocol": "http",
+							"host": [
+								"users",
+								"bugred",
+								"ru"
+							],
+							"path": [
+								"tasks",
+								"rest",
+								"getuserfull"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "exersice",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = pm.response.json();\r",
+									"pm.test(\"to be Array\", function () {\r",
+									"    pm.expect(jsonData.tasks).to.be.instanceOf(Array);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Its Array\", function () {\r",
+									"    pm.expect(jsonData.tasks).to.be.a(\"array\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Not empty Array\", function () {\r",
+									"    pm.expect(jsonData.tasks).to.be.a(\"array\").that.is.not.empty;\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"test_cu_11@mail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://users.bugred.ru/tasks/rest/getuserfull",
+							"protocol": "http",
+							"host": [
+								"users",
+								"bugred",
+								"ru"
+							],
+							"path": [
+								"tasks",
+								"rest",
+								"getuserfull"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": ".members ; .lengthOf ;",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = pm.response.json();\r",
+									"//массив\r",
+									"pm.test(\"Проверка что это массив и он пустой\", function () {\r",
+									"    pm.expect(jsonData.companys).to.be.a(\"Array\").that.is.empty\r",
+									"});\r",
+									"\r",
+									"pm.test(\"В массиве есть задача и такс\", function () {\r",
+									"    pm.expect(jsonData.tasks).to.be.a(\"array\").that.deep.include({\r",
+									"            \"name\": \"Вторая задача 2\",\r",
+									"            \"id_task\": 272\r",
+									"        });\r",
+									"});\r",
+									"//keys\r",
+									"pm.test(\"В массвие 2 элемента, 2 ключа\", function () {\r",
+									"    pm.expect(jsonData.tasks).to.have.all.keys(0,1);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"В массиве any.keys \", function () {\r",
+									"    pm.expect(jsonData.tasks).to.have.any.keys(1);\r",
+									"});\r",
+									"//.to.have.members проверяет наличие всех элементов(не важно в каком порядке)\r",
+									"pm.test(\"Тест из доки .have\", function () {\r",
+									"    pm.expect([1,2,3]).to.have.members([2,1,3]);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Тест из доки .include\", function () {\r",
+									"    pm.expect([1,2,3]).to.include.members([1,3]);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"have.tasks\", function () {\r",
+									"    pm.expect(jsonData.tasks).to.have.deep.members([\r",
+									"        {\r",
+									"            \"name\": \"Вторая задача 2\",\r",
+									"            \"id_task\": 272\r",
+									"        },\r",
+									"        {\r",
+									"            \"name\": \"Первая задача 2\",\r",
+									"            \"id_task\": 271\r",
+									"        }\r",
+									"    ]);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"проверка порядка\", function () {\r",
+									"    pm.expect(jsonData.tasks[0].name).to.eql(\"Вторая задача 2\");\r",
+									"    pm.expect(jsonData.tasks[0].id_task).to.eql(272);\r",
+									"\r",
+									"    pm.expect(jsonData.tasks[1].name).to.eql(\"Первая задача 2\");\r",
+									"    pm.expect(jsonData.tasks[1].id_task).to.eql(271);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"include.tasks\", function () {\r",
+									"    pm.expect(jsonData.tasks).to.include.deep.members([\r",
+									"       {\r",
+									"            \"name\": \"Первая задача 2\",\r",
+									"            \"id_task\": 271\r",
+									"        }\r",
+									"    ]);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Несколько элементов массива include.tasks\", function () {\r",
+									"    pm.expect(jsonData.tasks).to.include.deep.members([\r",
+									"       {\r",
+									"            \"name\": \"Вторая задача 2\",\r",
+									"            \"id_task\": 272\r",
+									"        },\r",
+									"        {\r",
+									"            \"name\": \"Первая задача 2\",\r",
+									"            \"id_task\": 271\r",
+									"        }\r",
+									"    ]);\r",
+									"});\r",
+									"\r",
+									"//lengthof\r",
+									"pm.test(\"length of\", function () {\r",
+									"    pm.expect(jsonData.tasks).to.have.lengthOf(2)\r",
+									"});\r",
+									"pm.test(\"length of above\", function () {\r",
+									"    pm.expect(jsonData.tasks).to.have.lengthOf.above(1)\r",
+									"});\r",
+									"pm.test(\"length at least\", function () {\r",
+									"    pm.expect(jsonData.tasks).to.have.lengthOf.at.least(1)\r",
+									"});\r",
+									"pm.test(\"length at most\", function () {\r",
+									"    pm.expect(jsonData.tasks).to.have.lengthOf.at.most(3)\r",
+									"});\r",
+									"pm.test(\"length of below\", function () {\r",
+									"    pm.expect(jsonData.tasks).to.have.lengthOf.below(4)\r",
+									"});\r",
+									"//within попадает в диапазон от до\r",
+									"pm.test(\"length within\", function () {\r",
+									"    pm.expect(jsonData.tasks).to.have.lengthOf.within(1,3)\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"test111@mail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://users.bugred.ru/tasks/rest/getuserfull",
+							"protocol": "http",
+							"host": [
+								"users",
+								"bugred",
+								"ru"
+							],
+							"path": [
+								"tasks",
+								"rest",
+								"getuserfull"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "exersice 3 Chai.js",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = pm.response.json();\r",
+									"let num = jsonData.tasks[0].id_task;\r",
+									"pm.test(\"id_task\", function () {\r",
+									"    pm.expect(jsonData.tasks[0].id_task).to.be.a(\"number\");\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Your test name\", function () {\r",
+									"    pm.expect(jsonData.tasks[0].id_task).to.eql(32);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Your test name\", function () {\r",
+									"    pm.expect(jsonData.tasks[0].id_task).to.eql(32);\r",
+									"});\r",
+									"\r",
+									"//сравнение чисел\r",
+									"\r",
+									"pm.test(\"to.be.oneOf\", function () {\r",
+									"    pm.expect(jsonData.tasks[0].id_task).to.be.oneOf([30,32,662]);\r",
+									"});\r",
+									"pm.test(\"above - Больше чем\", function () {\r",
+									"    pm.expect(jsonData.tasks[0].id_task).to.be.above(1);\r",
+									"});\r",
+									"pm.test(\"least - больше или равно\", function () {\r",
+									"    pm.expect(jsonData.tasks[0].id_task).to.be.least(3);\r",
+									"});\r",
+									"pm.test(\"below - меньше чем\", function () {\r",
+									"    pm.expect(jsonData.tasks[0].id_task).to.be.below(49);\r",
+									"});\r",
+									"pm.test(\"most - меньше или равно\", function () {\r",
+									"    pm.expect(jsonData.tasks[0].id_task).to.be.most(49);\r",
+									"});\r",
+									"pm.test(\"within - находиться в диапазоне\", function () {\r",
+									"    pm.expect(jsonData.tasks[0].id_task).to.be.within(1, 48);\r",
+									"});\r",
+									"\r",
+									"//равенство\r",
+									"pm.test(\"Число = число строгое\", function () {\r",
+									"    pm.expect(num === 32).to.be.ok;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Число = число нестрогое\", function () {\r",
+									"    pm.expect(num == 32).to.be.ok;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Число = число строка\", function () {\r",
+									"    pm.expect(num == \"32\").to.be.true;\r",
+									"});\r",
+									"\r",
+									"//число существует\r",
+									"pm.test(\"not null\", function () {\r",
+									"    pm.expect(num).to.not.be.null;\r",
+									"});\r",
+									"\r",
+									"/*pm.test(\"not empty\", function () {\r",
+									"    pm.expect(num).to.be.empty;\r",
+									"});*/\r",
+									"pm.test(\"not undefined\", function () {\r",
+									"    pm.expect(num).to.not.be.undefined;\r",
+									"});\r",
+									"pm.test(\"not NaN\", function () {\r",
+									"    pm.expect(num).to.not.be.NaN;\r",
+									"});\r",
+									"\r",
+									"//сравнение чисел\r",
+									"/*pm.test(\"to.include - для чисел не работает\", function () {\r",
+									"    pm.expect(num).to.include(32);\r",
+									"});*/"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"test_cu_11@mail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://users.bugred.ru/tasks/rest/getuserfull",
+							"protocol": "http",
+							"host": [
+								"users",
+								"bugred",
+								"ru"
+							],
+							"path": [
+								"tasks",
+								"rest",
+								"getuserfull"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "exersice 2 Node.js",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = pm.response.json();\r",
+									"const assert = require(\"assert\");\r",
+									"pm.test(\"Тест через assert.ok, строгое равенство\", function () { \r",
+									"    assert.ok(jsonData.tasks[0].id_task === 32)\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Тест через assert.ok, нестрогое равенство\", function () { \r",
+									"    assert.ok(jsonData.tasks[0].id_task == \"32\")\r",
+									"});\r",
+									"\r",
+									"\r",
+									"//assert.equal\r",
+									"\r",
+									"pm.test(\"Число equal = строка\", function () { \r",
+									"    assert.equal(jsonData.tasks[0].id_task,\"32\")\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Число equal = число\", function () { \r",
+									"    assert.equal(jsonData.tasks[0].id_task,32)\r",
+									"});\r",
+									"\r",
+									"//equal дочернего элемента - сработает только deep\r",
+									"pm.test(\"deepEqual\", function () { \r",
+									"    assert.deepEqual(jsonData.tasks, [\r",
+									"        {\r",
+									"            \"name\": \"Новая\",\r",
+									"            \"id_task\": 32\r",
+									"        }\r",
+									"    ]);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"test_cu_11@mail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://users.bugred.ru/tasks/rest/getuserfull",
+							"protocol": "http",
+							"host": [
+								"users",
+								"bugred",
+								"ru"
+							],
+							"path": [
+								"tasks",
+								"rest",
+								"getuserfull"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "exercise Node.js",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = pm.response.json();\r",
+									"\r",
+									"//Chai\r",
+									"pm.test(\"Проверяем message через Chai.js\", function () { \r",
+									"    pm.expect(jsonData.message).to.eql(\" email test_demo_1@gmail.com уже есть в базе\");\r",
+									"});\r",
+									"\r",
+									"//Node\r",
+									"const assert = require(\"assert\");\r",
+									"\r",
+									"pm.test(\"Тест через assert.ok\", function () { \r",
+									"    assert.ok(jsonData.message === \" email test_demo_1@gmail.com уже есть в базе\")\r",
+									"});\r",
+									"\r",
+									"\r",
+									"//assert.equal\r",
+									"\r",
+									"pm.test(\"Тест через assert.equal\", function () { \r",
+									"    assert.equal(jsonData.message, \" email test_demo_1@gmail.com уже есть в базе\")\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "test_demo_1@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "name",
+									"value": "Демо 1",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://users.bugred.ru/tasks/rest/doregister",
+							"protocol": "http",
+							"host": [
+								"users",
+								"bugred",
+								"ru"
+							],
+							"path": [
+								"tasks",
+								"rest",
+								"doregister"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "XML Chai (подсказки)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = xml2Json(responseBody);\r",
+									"//var jsonData = pm.response.json();\r",
+									"pm.test(\"Подсказка по Анне - deep.include\"), function () {\r",
+									"    pm.expect(jsonData.SuggestResponse.suggestions).to.deep.include({\r",
+									"        \"value\": Анна,\r",
+									"        \"unrestricted_value\": Анна,\r",
+									"        \"data\": {\r",
+									"        \"surname\" : null,\r",
+									"        \"name\" : \"Анна\",\r",
+									"        \"patronymic\": null,\r",
+									"        \"gender\" : \"FEMALE\",\r",
+									"        \"source\" : null,\r",
+									"        \"qc\" : 0\r",
+									"          }\r",
+									"        })\r",
+									"};\r",
+									"\r",
+									"\r",
+									"pm.test(\"Подсказка по Анне - deep.include\"), function () {\r",
+									"pm.expect(jsonData.SuggestResponse.suggestions[0].value).to.include(\"Аннаг\")\r",
+									"};"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/xml",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/xml",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Token 251cbc92264812f5536f1e1a9e61847056012233",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<req>\r\n<query>Ан</query>\r\n<gender>FEMALE</gender>\r\n<count>5</count>\r\n</req>"
+						},
+						"url": {
+							"raw": "https://suggestions.dadata.ru/suggestions/api/4_1/rs/suggest/fio",
+							"protocol": "https",
+							"host": [
+								"suggestions",
+								"dadata",
+								"ru"
+							],
+							"path": [
+								"suggestions",
+								"api",
+								"4_1",
+								"rs",
+								"suggest",
+								"fio"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Заголовки (doregister)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Content-Type is present\", function () {\r",
+									"    pm.response.to.have.header(\"Content-Type\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Content-Type проверка value\", function () {\r",
+									"    pm.response.to.have.header(\"Content-Type\", \"application/json\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Cache-Control проверка value\", function () {\r",
+									"    pm.response.to.have.header(\"Cache-Control\", \"no-store, no-cache, must-revalidate, post-check=0, pre-check=0\");\r",
+									"});\r",
+									"\r",
+									"\r",
+									"\r",
+									"//include\r",
+									"\r",
+									"// console.log(pm.response)\r",
+									"//console.log(pm.response.headers.members[7])\r",
+									"// console.log(Object.keys(pm.response))\r",
+									"// console.log(Object.keys(pm.response.headers))\r",
+									"// //console.log(pm.response.header[8])\r",
+									"\r",
+									"\r",
+									"\r",
+									"pm.test(\"include для заголовка\", function () {\r",
+									"    pm.expect(pm.response.headers.members[7].value).to.include(\"no-cache\");\r",
+									"});\r",
+									"\r",
+									"console.log(pm.response.headers.get(\"Cache-Control\"))\r",
+									"\r",
+									"pm.test(\"include для заголовка через get\", function () {\r",
+									"    pm.expect(pm.response.headers.get(\"Cache-Control\")).to.include(\"no-cache\");\r",
+									"});\r",
+									"\r",
+									"console.log(pm.response.headers.contentSize());\r",
+									"\r",
+									"console.log(pm.response.headers.count());\r",
+									"pm.test(\"сколько заголовков вернулось\", function () {\r",
+									"    pm.expect(pm.response.headers.count()).to.eql(9);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Content-type has\", function () {\r",
+									"    pm.expect(pm.response.headers.has(\"Content-type\", \"application/json\")).to.be.true;\r",
+									"});\r",
+									"\r",
+									"console.log(pm.response.headers.idx(7))\r",
+									"pm.test(\"Cache-Control через idx\", function () {\r",
+									"    pm.expect(pm.response.headers.idx(7).key).to.eql(\"Cache-Control\");\r",
+									"});\r",
+									"\r",
+									"console.log(pm.response.headers.indexOf(\"Cache-Control\"))\r",
+									"pm.test(\"Cache-Control через indexOf\", function () {\r",
+									"    pm.expect(pm.response.headers.indexOf(\"Cache-Control\")).to.eql(7);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "test_demo_1@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "name",
+									"value": "Демо 1",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://users.bugred.ru/tasks/rest/doregister",
+							"protocol": "http",
+							"host": [
+								"users",
+								"bugred",
+								"ru"
+							],
+							"path": [
+								"tasks",
+								"rest",
+								"doregister"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cookie (doregister)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//count\r",
+									"\r",
+									"console.log(pm.cookies.count())\r",
+									"pm.test(\"одна cookies\", function () {\r",
+									"    pm.expect(pm.cookies.count()).to.be.eql(1);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"// has\r",
+									"\r",
+									"pm.test(\"сколько заголовков вернулось\", function () {\r",
+									"    pm.expect(pm.cookies.has(\"PHPSESSID\")).to.be.true;\r",
+									"});\r",
+									"\r",
+									"\r",
+									"\r",
+									"//get\r",
+									"//самый простой и понятный тест\r",
+									"console.log(pm.cookies.get(\"PHPSESSID\"))\r",
+									"pm.test(\"Правильное значени get\", function () {\r",
+									"    pm.expect(pm.cookies.get(\"PHPSESSID\")).to.be.eql(\"2f3cacb1ef68e7be2f5541c265c83abf\");\r",
+									"});\r",
+									"\r",
+									"\r",
+									"// value\r",
+									"\r",
+									"pm.test(\"cookies + value через has\", function () {\r",
+									"    pm.expect(pm.cookies.has(\"PHPSESSID\", \"2f3cacb1ef68e7be2f5541c265c83abf\")).to.be.true;\r",
+									"});\r",
+									"\r",
+									"// idx\r",
+									"\r",
+									"console.log(pm.cookies.idx(0));\r",
+									"pm.test(\"idx\", function () {\r",
+									"    pm.expect(pm.cookies.idx(0).value).to.be.eql(\"2f3cacb1ef68e7be2f5541c265c83abf\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "test_demo_1@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "name",
+									"value": "Демо 1",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://users.bugred.ru/tasks/rest/doregister",
+							"protocol": "http",
+							"host": [
+								"users",
+								"bugred",
+								"ru"
+							],
+							"path": [
+								"tasks",
+								"rest",
+								"doregister"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
