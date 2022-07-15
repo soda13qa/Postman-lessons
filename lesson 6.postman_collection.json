@@ -1,0 +1,145 @@
+{
+	"info": {
+		"_postman_id": "a65e7505-1143-4cc8-b4d4-647d045c0d80",
+		"name": "lesson 6",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "20623753"
+	},
+	"item": [
+		{
+			"name": "lesson 6 Copy",
+			"item": [
+				{
+					"name": "данные из файла",
+					"item": [
+						{
+							"name": "Считывание данных из файла",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var jsonData = pm.response.json();\r",
+											"//data используется если нужно значение из файла\r",
+											"console.log(jsonData.name)\r",
+											"console.log(data.name)\r",
+											"console.log(pm.iterationData.get(\"email\"))\r",
+											"pm.test(\"name взято из файла\", function () {\r",
+											"    pm.expect(jsonData.name).to.eql(data.name);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"name взято из файла\", function () {\r",
+											"    pm.expect(jsonData.email).to.eql(pm.iterationData.get(\"email\"));\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "email",
+											"value": "{{email}}",
+											"type": "text"
+										},
+										{
+											"key": "name",
+											"value": "{{name}}",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "1",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://users.bugred.ru/tasks/rest/doregister",
+									"protocol": "http",
+									"host": [
+										"users",
+										"bugred",
+										"ru"
+									],
+									"path": [
+										"tasks",
+										"rest",
+										"doregister"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "environment (doregister)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"console.log(pm.environment.get(\"Строка из GUI\"));\r",
+									"\r",
+									"pm.environment.set(\"variable_key\", \"v21333211\");\r",
+									"console.log(pm.environment.get(\"variable_key\"));\r",
+									"console.log(pm.variables.get(\"variable_key\"));\r",
+									"\r",
+									"pm.environment.set(\"variable_key\", \"локальное значение\");\r",
+									"console.log(pm.environment.get(\"variable_key\"));"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "test_demo_1@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "name",
+									"value": "Демо 1",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://users.bugred.ru/tasks/rest/doregister",
+							"protocol": "http",
+							"host": [
+								"users",
+								"bugred",
+								"ru"
+							],
+							"path": [
+								"tasks",
+								"rest",
+								"doregister"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
